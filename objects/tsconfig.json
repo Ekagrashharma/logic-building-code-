@@ -29,6 +29,6 @@
     ".next/types/**/*.ts",
     ".next/dev/types/**/*.ts",
     "**/*.mts"
-, "app/utils/updateForm.js"  ],
+, "app/utils/updateForm.js", "app/api/User.js", "app/page.jsx"  ],
   "exclude": ["node_modules"]
 }
