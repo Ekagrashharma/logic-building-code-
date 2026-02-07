@@ -1,13 +1,29 @@
-import { user } from "./api/user"
-import { sanitizeUser } from "./utils/sanitizeUser"
+import { updateForm } from "./utils/updateForm";
 
 const page = () => {
-  console.log("original user",user)
 
-  
+let formState = {
+  name: "",
+  email: "",
+  password: ""
+}
 
-  const cleanUser = sanitizeUser(user)
-  console.log(cleanUser)
+
+
+const payload= { 
+  field: "email", 
+  value: "test@mail.com"
+  }
+
+// formState={
+//   ...formState,
+//   [payload.field]:payload.value
+// }
+// console.log(formState)
+
+formState= updateForm(formState, "name", "ekagra")
+formState= updateForm(formState, "email", "ekagrasharma!@#")
+console.log(formState.password)
 
   return (
     <div>
