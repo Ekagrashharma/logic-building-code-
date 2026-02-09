@@ -1,8 +1,8 @@
-    const user = {
-        id: 101,
-        name: "Ekagra",
-        email: "ekagra@mail.com",
-        age: 22,
+const patchUser = {
+    id: 101,
+    name: "Ekagra",
+    email: "ekagra@mail.com",
+    age: 22,
         role: "admin",
         password: "secret123",
         token: "jwt-token",
@@ -20,10 +20,19 @@
             admin: ["dashboard", "users", "settings"],
             user: ["profile"],
         },
-        };  
+        }; 
 
-const validUser = (user)=>{
-    return user?.permissions?.admin.includes("dashboard") ?? false
+const payload = {
+    email: "new@mail.com",
+    age: 23,
+    };
+
+
+function patchUpdate (patchUser, payload){
+    return {
+        ...patchUser,
+        ...payload
+    }
 }
-const newValideUser = validUser(user)
-console.log(newValideUser)
+const newUser = patchUpdate()
+console.log(newUser)
