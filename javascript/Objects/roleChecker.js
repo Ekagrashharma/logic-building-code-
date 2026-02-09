@@ -23,6 +23,7 @@
         };  
 
 const validUser = (user)=>{
-    return user?.permissions?.admin?.hasOwnProperty("dashboard") ?? false
+    return user?.permissions?.admin.includes("dashboard") ?? false
 }
-validUser(user)
+const newValideUser = validUser(user)
+console.log(newValideUser)
