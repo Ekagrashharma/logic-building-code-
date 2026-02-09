@@ -26,6 +26,7 @@ console.log("original user",user)
 
 function sanitizeUser(user){
     const  {password, token, ...newSafeUser}= user
-    return console.log(newSafeUser)
+    return newSafeUser
 }
-sanitizeUser(user)
+const newUser = sanitizeUser(user)
+console.log(newUser)
