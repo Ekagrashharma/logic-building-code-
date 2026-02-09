@@ -1,4 +1,4 @@
-    export  const user = {
+    const user = {
     id: 101,
     name: "Ekagra",
     email: "ekagra@mail.com",
@@ -21,4 +21,5 @@
         user: ["profile"],
     },
     };
+
 
