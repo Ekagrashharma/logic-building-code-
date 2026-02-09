@@ -23,8 +23,8 @@ const patchUser = {
         }; 
 
 const payload = {
-    email: "new@mail.com",
-    age: 23,
+    email: "hooloow@gmailpglu.com",
+    age: 231,
     };
 
 
@@ -34,5 +34,5 @@ function patchUpdate (patchUser, payload){
         ...payload
     }
 }
-const newUser = patchUpdate()
+const newUser = patchUpdate(patchUser, payload)
 console.log(newUser)
