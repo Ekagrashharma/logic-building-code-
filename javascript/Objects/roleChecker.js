@@ -21,3 +21,8 @@
             user: ["profile"],
         },
         };  
+
+const validUser = (user)=>{
+    return user?.permissions?.admin?.hasOwnProperty("dashboard") ?? false
+}
+validUser(user)
