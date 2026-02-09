@@ -22,7 +22,15 @@ const destructureUser = {
         },
 };  
 
-const userCity =destructureUser?.address?.location?.city
-const userZipcode =destructureUser?.address?.location?.zipcode
+// const userCity =destructureUser?.address?.location?.city
+// const userZipcode =destructureUser?.address?.location?.zipcode
+const {
+    address: {
+        location: { city, zipcode }
+    }
+} = destructureUser;
 
-console.log(`the user city is ${userCity} and Zip code is ${userZipcode}`)
+console.log(`the user city is ${city} and Zip code is ${zipcode}`);
+
+
+
