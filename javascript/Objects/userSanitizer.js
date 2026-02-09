@@ -22,4 +22,10 @@
     },
     };
 
+console.log("original user",user)
 
+function sanitizeUser(user){
+    const  {password, token, ...newSafeUser}= user
+    return console.log(newSafeUser)
+}
+sanitizeUser(user)
