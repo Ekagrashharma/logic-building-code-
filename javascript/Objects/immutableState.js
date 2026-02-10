@@ -22,3 +22,11 @@ const user = {
         },
 };  
 
+const updatedUser = {
+    ...user,
+        settings:{
+            ...user.settings,
+            theme:"massivebluehai",
+        },
+}
+console.log(updatedUser)
