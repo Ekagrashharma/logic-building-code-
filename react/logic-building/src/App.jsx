@@ -4,21 +4,16 @@ const employees = [
     {id:2,name:"Sara" } 
   ];
 
-function showEmployees(){
-  return(
-    <ul>
-      {employees.map((employee)=>(
-        <li key={employee.id}>{employee.name}</li>
-      ))}
-    </ul>
-  )
-}
 
 
 const App = () => {
   return (
     <div>
-      {showEmployees()}
+      <ul>
+      {employees.map((employee)=>(
+        <li key={employee.id}>{employee.name}</li>
+      ))}
+    </ul>
     </div>
   )
 }
