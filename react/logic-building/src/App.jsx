@@ -17,15 +17,28 @@ import './App.css'
 // }
 // const user = {name:"John",role:"Admin" };
 // const product = {name:"Laptop",price:50000 };
-const notification = [];
+// const notification = [];
 // function Isnotificaion(notification){
 //     return (!notification? "you have notifications" : "you have zero notification")
 // }
+const links = [
+  {id:1,label:"Home" },
+  {id:2,label:"About" }
+];
 
 const App = () => {
-
+const listItems = links.map( link => (
+    <li key={link.id}>
+      <ul>{link.label}</ul>
+    </li>
+))
     return (
-    //   <div>
+        <div>{listItems}</div>
+  )
+}
+
+export default App
+  //   <div>
     //   <Laptop product={product}/>
     //   <Usercard user={user}/>
     //   <p>{isLoggedIn ? "user is  login , Welcome back " : "user is not logged in , please first login"}</p>
@@ -35,13 +48,9 @@ const App = () => {
     //   ))}
     // </ul>
     // </div>
-    <div>
-      <p>{ notification.length > 0 
-      ? "you have notications" 
-      : "you have zero notification"
-      }</p>
-    </div>
-  )
-}
-
-export default App
+    // <div>
+    //   <p>{ notification.length > 0 
+    //   ? "you have notications" 
+    //   : "you have zero notification"
+    //   }</p>
+    // </div>
