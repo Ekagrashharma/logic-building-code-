@@ -1,36 +1,23 @@
 import './App.css'
 
-
-const menu = [
-  { id: 1, label: "Dashboard", roles: ["admin", "editor"] },
-  { id: 2, label: "Settings", roles: ["admin"] },
-  { id: 3, label: "Profile", roles: ["admin", "editor", "viewer"] }
+const products = [
+  {id:1,name:"Phone",price:11000 },
+  {id:2,name:"Charger",price:500 }
 ];
-const role ="editor";
 
-// const allowedMenu = menu.filter( item => item.roles.includes(role))
-
-// const App = ()=>{
-//   return <div>
-//     <h2>Allowed Label are :</h2>
-//     {allowedMenu.map(item => 
-//     <ol>{item.label}</ol>
-//   )}</div>
-// }
-
-// export default App 
+const result = products.filter(item => item.price > 10000)
+console.log(result)
 
 const App = () => {
-  return ( 
-    <>
-    <h4>the allowedMenu are </h4>
-    <ul>
-      {menu.filter(item => item.roles.includes(role))
-            .map(item => 
-              <li key={item.id}>{item.label}</li>
-            )}
-    </ul>
-    </>
+  return (
+    <div>
+      {result.map((item) => (
+        <div key={item.id}>
+        <h2>your product name is {item.name}</h2>
+        <p>your price is {item.price}</p>
+        </div>
+      ) )}
+    </div>
   )
 }
 
