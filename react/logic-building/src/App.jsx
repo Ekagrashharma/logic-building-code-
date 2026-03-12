@@ -1,49 +1,54 @@
 import "./App.css";
+import { useState } from "react";
 
-const theme = { mode: "dark", accent: "blue" };
+const notifications = [
+  { id: 1, message: "Payment received", read: false },
+  { id: 2, message: "New comment", read: true },
+  { id: 3, message: "Server alert", read: false },
+  { id: 4, message: "Server alert hai bhai mere", read: false },
+  { id: 5, message: "Server alert , fix kro jldi ", read: false },
+];
 
-function MenuItem({ theme }) {
-  const iconColor = theme.accent === "blue" ? "blue" : "black";
+const App = () => {
+  const [notification, setnotification] = useState(notifications);
 
-  return (
-    <div
-      style={{
-        padding: "10px",
-        background: theme.mode === "dark" ? "#222" : "#eee",
-        color: theme.mode === "dark" ? "white" : "black",
-        marginTop: "10px"
-      }}
-    >
-      <span style={{ color: iconColor }}>★</span> Menu Item
-    </div>
-  );
-}
+  const unReadNotification = notification.filter((n) => !n.read).length;
 
-function Sidebar({ theme }) {
-  return (
-    <div>
-      <h3>Sidebar</h3>
-      <MenuItem theme={theme} />
-    </div>
-  );
-}
+  const sortNotification = [...notification].sort((a, b) => a.read - b.read);
 
-function Layout({ theme }) {
+  function onToggleRead(id) {
+    setnotification(
+      notification.map((n) => (n.id === id ? { ...n, read: !n.read } : n)),
+    );
+  }
+
   return (
     <div>
-      <h2>Layout</h2>
-      <Sidebar theme={theme} />
+      <h3>Unread Notification: {unReadNotification}</h3>
+      {sortNotification.map((n) => (
+        <div>
+          <span>
+            {n.message}
+            <span
+              className={`ml-2 font-medium ${
+                n.read ? "text-green-500" : "text-red-500"
+              }`}
+            >
+              {n.read ? "Read" : "Unread"}
+            </span>
+          </span>
+          <button
+            className="text-center items-center h-6 w-25 m-2  border-2 bg-violet-400"
+            onClick={() => {
+              onToggleRead(n.id);
+            }}
+          >
+            Toggle{" "}
+          </button>
+        </div>
+      ))}
     </div>
   );
-}
-
-function App() {
-  return (
-    <div>
-      <h1>App</h1>
-      <Layout theme={theme} />
-    </div>
-  );
-}
+};
 
 export default App;
