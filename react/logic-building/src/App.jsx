@@ -1,54 +1,37 @@
-import "./App.css";
-import { useState } from "react";
+import {use, useContext, useState} from 'react'
+import './App.css'
+import Dashboard from './components/Dashboard'
+import { ThemeContext } from './components/themeContext'
 
-const notifications = [
-  { id: 1, message: "Payment received", read: false },
-  { id: 2, message: "New comment", read: true },
-  { id: 3, message: "Server alert", read: false },
-  { id: 4, message: "Server alert hai bhai mere", read: false },
-  { id: 5, message: "Server alert , fix kro jldi ", read: false },
-];
+// const user= {name:"Aman",role:"admin"}
 
+const themes= {
+ admin:{color:"red"},
+ editor:{color:"blue"},
+ viewer:{color:"green"}
+}
 const App = () => {
-  const [notification, setnotification] = useState(notifications);
+  const [user, setuser] = useState({name:"Aman",role:"user"})
 
-  const unReadNotification = notification.filter((n) => !n.read).length;
+  const theme = themes[user.role]
 
-  const sortNotification = [...notification].sort((a, b) => a.read - b.read);
-
-  function onToggleRead(id) {
-    setnotification(
-      notification.map((n) => (n.id === id ? { ...n, read: !n.read } : n)),
-    );
+  const changerole =(role)=>{
+    setuser({...user, role})
   }
 
   return (
+    <ThemeContext.Provider value={theme}>
     <div>
-      <h3>Unread Notification: {unReadNotification}</h3>
-      {sortNotification.map((n) => (
-        <div>
-          <span>
-            {n.message}
-            <span
-              className={`ml-2 font-medium ${
-                n.read ? "text-green-500" : "text-red-500"
-              }`}
-            >
-              {n.read ? "Read" : "Unread"}
-            </span>
-          </span>
-          <button
-            className="text-center items-center h-6 w-25 m-2  border-2 bg-violet-400"
-            onClick={() => {
-              onToggleRead(n.id);
-            }}
-          >
-            Toggle{" "}
-          </button>
-        </div>
-      ))}
-    </div>
-  );
-};
+      <h1>User :{user.name}</h1>
 
-export default App;
+      <button onClick={()=>{changerole("admin")}} >Admin</button>
+      <button onClick={()=>{changerole("editor")}} >Editor</button>
+      <button onClick={()=>{changerole("user")}} >User</button>
+
+    <Dashboard />
+    </div>
+    </ThemeContext.Provider>
+  )
+}
+
+export default App
