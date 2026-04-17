@@ -7,6 +7,11 @@ async function wordy() {
     let currentRow = 0 ;
         
 
+    const res = await fetch("https://words.dev-apis.com/word-of-the-day");
+    const { word } = await res.json();
+    setLoading(false);
+    
+   console.log(word)
 
     function addLetter(letter){
         if( currentGuess.length < MAX_ALPHABET_LENGTH ){
@@ -61,5 +66,9 @@ function removeElement(){
 
 function isLetter(letter) {
     return /^[a-zA-Z]$/.test(letter);
+}
+
+function setLoading(isLoading){
+    infoBar.classList.toggle('hidden', !isLoading )
 }
 wordy();
